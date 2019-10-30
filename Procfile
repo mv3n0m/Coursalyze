@@ -1,0 +1,1 @@
+web: gunicorn coursalyze.wsgi --log-file -
