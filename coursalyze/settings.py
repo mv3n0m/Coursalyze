@@ -78,9 +78,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'coursalyze.wsgi.application'
 
 
-SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = "812cu1er5938eg"  # Client ID
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = "5QojLWCL3mvXemNZ"  # Client Secret
-SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = ['r_basicprofile', 'r_emailaddress']
+SOCIAL_AUTH_LINKEDIN_OAUTH2_KEY = "811h65201er43i"  # Client ID
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SECRET = "EMAwTdpo4JES5YDI"  # Client Secret
+SOCIAL_AUTH_LINKEDIN_OAUTH2_SCOPE = [
+    'r_liteprofile', 'r_emailaddress', 'r_basicprofile', 'w_member_social', ]
 SOCIAL_AUTH_LINKEDIN_OAUTH2_FIELD_SELECTORS = [
     'email-address', 'formatted-name', 'specialities', 'public-profile-url', 'picture-url']
 SOCIAL_AUTH_LINKEDIN_OAUTH2_EXTRA_DATA = [
