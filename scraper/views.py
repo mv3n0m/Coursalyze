@@ -7,18 +7,14 @@ from .src import indexer
 
 
 def index(request):
-    return render(request, 'scraper/index.html', {'title': "Something is fishy"})
+    return render(request, 'scraper/index.html')
 
 
 def new_search(request):
     search = request.POST.get('search')
-    # Search.objects.create(search_text=search)
-
-    paginator = Paginator(indexer.index(search), 10)
-
+    filters = request.POST
+    paginator = Paginator(indexer.index(search, filters), 12)
     page = request.GET.get('page', 1)
-    # final_list = paginator.get_page(page)
-
     try:
         final_list = paginator.page(page)
     except PageNotAnInteger:
@@ -29,5 +25,10 @@ def new_search(request):
     context_items = {
         'search': search,
         'final_list': final_list,
+        'filters': filters,
     }
     return render(request, 'scraper/list.html', context_items)
+
+
+def details(request, slug):
+    return render(request, 'scraper/details.html', {'slug': slug})

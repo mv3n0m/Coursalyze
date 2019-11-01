@@ -37,6 +37,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'discussions',
+
     'scraper.apps.ScraperConfig',
     'django.contrib.admin',
     'django.contrib.auth',

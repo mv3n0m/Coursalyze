@@ -1,0 +1,51 @@
+<div
+  class="shadow-lg border-success mt-5 rounded"
+  style="max-width: 18rem; height: 800px"
+>
+  <div
+    class="card-header progress-bar progress-bar-striped progress-bar-animated bg-success text-center text-white font-italic"
+  >
+    Filters
+  </div>
+  <div class="card-body bg-light text-success">
+    <form action="/search/" method="POST">
+      {% csrf_token %}
+      <h5 class="card-title text-dark">
+        Sources
+        <button
+          class="btn btn-outline-light bg-success my-2 my-sm-0 ml-5"
+          type="submit"
+        >
+          Apply filters
+        </button>
+      </h5>
+      <input type="checkbox" name="source" value="coursera" />
+      Coursera<br />
+      <input type="checkbox" name="source" value="futurelearn" />
+      Futurelearn<br /><br />
+      <h5 class="card-title text-dark">Course Types</h5>
+      <input type="checkbox" name="course-type" value="course" /> COURSE<br />
+      <input type="checkbox" name="course-type" value="specializaton" />
+      SPECIALIZATION<br />
+      <input type="checkbox" name="course-type" value="degree" /> DEGREE<br />
+      <input
+        type="checkbox"
+        name="course-type"
+        value="professional certificate"
+      />
+      PROFESSIONAL CERTIFICATE<br />
+      <input type="checkbox" name="" value="" /><br />
+
+      <h5 class="card-title text-dark"></h5>
+      <input type="checkbox" name="" value="" /><br />
+      <input type="checkbox" name="" value="" /><br />
+      <h5 class="card-title text-dark"></h5>
+      <input type="checkbox" name="" value="" /><br />
+      <input type="checkbox" name="" value="" /><br />
+      <h5 class="card-title text-dark"></h5>
+      <input type="checkbox" name="" value="" /><br />
+      <input type="checkbox" name="" value="" /><br />
+      <input type="hidden" name="search" value="{{ search }}" />
+    </form>
+  </div>
+</div>

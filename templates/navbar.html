@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-success">
   <span class="navbar-brand mb-0 h1">Coursalyze</span>
 
   <button
@@ -27,11 +27,9 @@
         placeholder="Search"
         aria-label="Search"
         name="search"
+        style="width: 750px"
       />
-      <button
-        class="btn btn-outline-dark text-light bg-danger my-2 my-sm-0"
-        type="submit"
-      >
+      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">
         Search
       </button>
     </form>
@@ -43,7 +41,7 @@
         >
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="/discussions/">Discussions</a>
       </li>
       <li class="nav-item dropdown">
         <a
@@ -55,19 +53,16 @@
           aria-haspopup="true"
           aria-expanded="false"
         >
-          Dropdown
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-          >Disabled</a
+        <div
+          class="dropdown-menu dropdown-menu-right"
+          aria-labelledby="navbarDropdown"
         >
+          <a class="dropdown-item text-success" href="#">Action</a>
+          <a class="dropdown-item text-primary" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item text-danger" href="#">Logout</a>
+        </div>
       </li>
     </ul>
   </div>
