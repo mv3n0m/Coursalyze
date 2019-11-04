@@ -1,4 +1,3 @@
-{% extends 'base.html' %} {% block content %}
 <div class="row mt-4">
   <div class="col">
     <h2>Add Item</h2>
@@ -14,21 +13,18 @@
         class="form-control mb-2 mr-4"
         placeholder="type here..."
       />
-      <button type="submit" class="btn btn-primary mb-2">Save</button>
+      <button type="submit" class="btn btn-success mb-2">Send</button>
     </form>
   </div>
 </div>
 <div class="row mt-4">
   <div class="col">
     <ul class="list-group">
-      {% for todo_item in todo_items %}
+      {% for item in items %}
       <li class="list-group-item">
-        <div class="text-break">{{ todo_item.text }}</div>
+        <div class="text-break">{{ item.text }}</div>
         <div class="float-right">
-          <form
-            action="/discussions/delete_item/{{ todo_item.id }}/"
-            method="post"
-          >
+          <form action="/discussions/delete_item/{{ item.id }}/" method="post">
             {% csrf_token %}
             <button type="submit" class="btn btn-sm btn-danger">
               Delete
@@ -40,4 +36,3 @@
     </ul>
   </div>
 </div>
-{% endblock content %}

@@ -30,5 +30,10 @@ def new_search(request):
     return render(request, 'scraper/list.html', context_items)
 
 
-def details(request, slug):
-    return render(request, 'scraper/details.html', {'slug': slug})
+def detail(request, slug):
+    data = indexer.detail(slug)
+    context_items = {
+        'slug': slug,
+        'data': data,
+    }
+    return render(request, 'scraper/details.html', context_items)
