@@ -6,7 +6,7 @@ from .models import Discussions
 
 
 def index(request):
-    items = Discussions.objects.all().order_by("-added_date")
+    items = Discussions.objects.all().order_by("added_date")
     return render(request, 'discussions.html', {
         'items': items
     })

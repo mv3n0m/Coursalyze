@@ -33,15 +33,15 @@ def index(search, filters):
 
         for list_item in course_list:
             list_item['src'] = value.split('/search')[0]
+            final_list.append(list_item)
             if course_source or course_type or provider:
-                if list_item['src'].split('.')[1] not in course_source and list_item in final_list:
+                print(course_source, course_type, provider)
+                if course_source and list_item['src'].split('.')[1] not in course_source and list_item in final_list:
                     final_list.remove(list_item)
-                if list_item['course_type'].lower() not in course_type and list_item in final_list:
+                if course_type and list_item['course_type'].lower() not in course_type and list_item in final_list:
                     final_list.remove(list_item)
-                if list_item['course_provider'].lower() not in provider and list_item in final_list:
+                if provider and list_item['course_provider'].lower() not in provider and list_item in final_list:
                     final_list.remove(list_item)
-            else:
-                final_list.append(list_item)
 
     return final_list
 

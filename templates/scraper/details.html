@@ -18,4 +18,37 @@
   </div>
 </div>
 
+<h2 class="text-success mt-5">Skills you will gain</h2>
+<div class="d-flex flex-row justify-content-around mt-3 ">
+  {% for skill in data.skills %}
+  <span class="badge badge-pill badge-secondary">
+    {{ skill }}
+  </span>
+  {% endfor %}
+</div>
+<!-- 
+<h2 class="text-success text-center">Instructors</h2>
+
+<h2 class="text-success text-center">Instructors</h2> -->
+
+<h2 class="text-success mt-5">Instructors</h2>
+<div class="d-flex flex-row bd-highlight mt-3 justify-content-between">
+  {% for instructor in data.instructors %}
+  <div class="p-2 bd-highlight text-center">
+    <img
+      src="{{ instructor.instructor_img }}"
+      alt=""
+      class="rounded mx-auto d-block"
+      style="width: 100px; height: 100px; "
+    />
+    <h5>{{ instructor.instructor_name }}</h5>
+    <h6>{{ instructor.instructor_title }}</h6>
+    <p class="font-italic text-success">
+      {{ instructor.instructor_school }}
+    </p>
+  </div>
+  {% endfor %}
+</div>
+<!-- {{ data }} -->
+
 {% endblock %}

@@ -1,15 +1,16 @@
+from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from .models import Search
 from .src import indexer
 
-# Create your views here.
 
-
+@login_required
 def index(request):
     return render(request, 'scraper/index.html')
 
 
+@login_required
 def new_search(request):
     search = request.POST.get('search')
     filters = request.POST
@@ -30,6 +31,7 @@ def new_search(request):
     return render(request, 'scraper/list.html', context_items)
 
 
+@login_required
 def detail(request, slug):
     data = indexer.detail(slug)
     context_items = {
