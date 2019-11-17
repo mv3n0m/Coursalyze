@@ -12,3 +12,4 @@ media/
 static/
 static_CDN_test/
 /venv/*
+venv/

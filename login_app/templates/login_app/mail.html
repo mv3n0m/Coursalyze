@@ -1,0 +1,37 @@
+{% extends 'base1.html' %} {% block content %}
+<div
+  class="card card-sm"
+  style="margin-left: 20%; margin-right: 20%; margin-top: 10%; color:green"
+>
+  <form action="/" method="post">
+    {% csrf_token %}
+    <div class="card-body">
+      <div class="form-group">
+        <label>Username</label>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="only small letters allowed ..."
+        />
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          placeholder="email@example.com"
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" placeholder="Password" />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success" style="width: 100%">
+      Register Me!!!
+    </button>
+  </form>
+</div>
+{% endblock %}

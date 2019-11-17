@@ -8,26 +8,46 @@
       ></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
       <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="4"></li>
+      <li data-target="#carouselExampleCaptions" data-slide-to="5"></li>
     </ol>
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img
-          src="https://boygeniusreport.files.wordpress.com/2019/11/3275875a.jpg?quality=98&strip=all&w=782"
-          class="d-block w-100"
-          style="height: 400px"
-          alt="..."
+          src="https://sarahyassera.files.wordpress.com/2015/05/suggestions.gif?w=300&h=121"
+          class="d-block w-100 img-fluid"
+          style="max-width: 100%; height: 500px"
+          alt="Suggestions"
         />
-        <div class="carousel-caption d-none d-md-block">
-          <h5>First slide label</h5>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <h5>Suggested according to your preferences.</h5>
+          <p>Slide through and click on the title to view the course.</p>
         </div>
       </div>
+      {% for sugg in suggs %}
       <div class="carousel-item">
+        <img
+          src="{{ sugg.course_image}}"
+          class="d-block w-100 img-fluid"
+          style="max-width: 100%; height: 500px"
+          alt="..."
+        />
+        <div class="carousel-caption d-none d-md-block text-dark">
+          <a href="https://www.coursera.org{{sugg.course_link}}/"><h2 class="text-success">{{ sugg.course_title }}</h2></a>
+          <p>{{sugg.course_type}}</p>
+          <h5 class="text-success">{{ sugg.course_provider }}</p>
+
+        </div>
+      </div>
+      {% endfor %}
+      <p>{{sugg}}</p>
+      <!-- <div class="carousel-item">
         <img
           src="https://miro.medium.com/max/2473/1*PXHkfdYyliqb1qCrznu5TQ.jpeg"
           class="d-block w-100"
           alt="..."
-          style="height: 400px"
+          style="height: 500px"
         />
         <div class="carousel-caption d-none d-md-block">
           <h5>Second slide label</h5>
@@ -39,7 +59,7 @@
           src="https://jaxenter.com/wp-content/uploads/2018/08/shutterstock_794051476-350x236.jpg"
           class="d-block w-100"
           alt="..."
-          style="height: 400px"
+          style="height: 500px"
         />
         <div class="carousel-caption d-none d-md-block">
           <h5>Third slide label</h5>
@@ -47,7 +67,7 @@
             Praesent commodo cursus magna, vel scelerisque nisl consectetur.
           </p>
         </div>
-      </div>
+      </div> -->
     </div>
     <a
       class="carousel-control-prev"

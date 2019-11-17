@@ -15,10 +15,11 @@ def index(request):
 def add_item(request):
     current_date = timezone.now()
     content = request.POST['input_text']
-    Discussions.objects.create(added_date=current_date, text=content)
+    Discussions.objects.create(
+        user=request.user, added_date=current_date, text=content)
     return HttpResponseRedirect('/discussions/')
 
 
-def delete_item(request, todo_item_id):
-    Discussions.objects.get(id=todo_item_id).delete()
+def delete_item(request, item_id):
+    Discussions.objects.get(id=item_id).delete()
     return HttpResponseRedirect('/discussions/')

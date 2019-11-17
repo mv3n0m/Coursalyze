@@ -2,7 +2,6 @@ import requests
 
 from bs4 import BeautifulSoup
 from requests.compat import quote_plus
-from urllib.request import Request, urlopen
 from . import courses, details
 
 
@@ -34,8 +33,8 @@ def index(search, filters):
         for list_item in course_list:
             list_item['src'] = value.split('/search')[0]
             final_list.append(list_item)
+
             if course_source or course_type or provider:
-                print(course_source, course_type, provider)
                 if course_source and list_item['src'].split('.')[1] not in course_source and list_item in final_list:
                     final_list.remove(list_item)
                 if course_type and list_item['course_type'].lower() not in course_type and list_item in final_list:
@@ -54,3 +53,11 @@ def detail(slug):
             soup = BeautifulSoup(response.text, features='html.parser')
             data = details.head(soup, url)
     return data
+
+
+def temp(search):
+    response = requests.get(sites['coursera'].format(search), headers=headers)
+    data = response.text
+    soup = BeautifulSoup(data, features='html.parser')
+    course_list = courses.head('coursera', soup)
+    return course_list

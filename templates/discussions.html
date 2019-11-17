@@ -49,8 +49,7 @@
             name="input_text"
             class="form-control mb-2 mr-4"
             placeholder="Type here..."
-        style="width: 1000px"
-
+            style="width: 1000px"
           />
           <button type="submit" class="btn btn-success btn-outline-light mb-2">
             Send
@@ -61,13 +60,13 @@
 
     <div class="container mt-2">
       <div class="list-group"></div>
-      {% for item in items %} {% if item.id|divisibleby:"2" %}
+      {% for item in items %} {% if request.user == item.user %}
         <a href="/discussions/delete_item/{{ item.id }}/"
-         class="list-group-item list-group-item-action list-group-item-secondary mb-1">{{item.text}}</a>
+          class="list-group-item list-group-item-action list-group-item-secondary mb-1 text-right">{{item.text}}</a>
       {% else %}
-        <a href="/discussions/delete_item/{{ item.id }}/"
-          class="list-group-item list-group-item-action list-group-item-success mb-1">{{item.text}}</a>
-      {% endif %} {% endfor %}
+          <a href="#"
+        class="list-group-item list-group-item-action list-group-item-success mb-1"><strong> {{ item.user }}:</strong> {{item.text}}</a>
+          {% endif %} {% endfor %}
       </div>
     </div>
 

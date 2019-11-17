@@ -1,15 +1,21 @@
 {% extends 'base1.html' %} {% block content %}
-<br />
-{% block title %} Sign in {% endblock %}
-<div>
-  <div class="row">
-    <div class="col-md-8 mx-auto social-container my-2 order-md-1">
-      <button class="btn btn-info mb-2">
-        <a href="{% url 'social:begin' 'linkedin-oauth2' %}"
-          >Login with LinkedIn</a
-        >
-      </button>
-    </div>
+<div
+  class="card text-center p-2"
+  style="margin-left: 30%; margin-right: 30%; margin-top: 20%;"
+>
+  <div class="card-header bg-success text-white">
+    Register Yourself
   </div>
-  {% endblock %}
+  <div class="card-body">
+    <button class="btn btn-lg btn-outline-success btn-info">
+      <a href="{% url 'social:begin' 'linkedin-oauth2' %}" style="color:white;"
+        >Sign In with LinkedIn</a
+      >
+    </button>
+    <!-- <br />
+    <div class="btn btn-lg btn-outline-success btn-danger mt-5">
+      <a href="mail/" style="color:white;">SignUp with Mail</a>
+    </div> -->
+  </div>
 </div>
+{% endblock %}

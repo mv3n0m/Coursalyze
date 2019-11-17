@@ -8,6 +8,10 @@ def login(request):
     return render(request, 'login.html')
 
 
+# def mail(request):
+#     return render(request, 'mail.html')
+
+
 @login_required
 def home(request):
     return render(request, 'home.html')

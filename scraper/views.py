@@ -1,13 +1,37 @@
+import random
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
+from login_app.models import Preferences
 from .models import Search
-from .src import indexer
+from .src import indexer, trialer
 
 
 @login_required
 def index(request):
-    return render(request, 'scraper/index.html')
+    obj = []
+    suggs = []
+    p = request.POST.get('p')
+    if p:
+        try:
+            Preferences.objects.create(user=request.user, tech=p)
+        except:
+            error = "You are already logged in elsewhere!"
+
+    techs = Preferences.objects.get(user=request.user)
+    if techs:
+        obj.clear()
+        suggs.clear()
+        for tech in techs.tech.split(','):
+            obj.extend(indexer.temp(search=tech))
+        for i in range(5):
+            suggs.append(obj[random.randint(1, len(obj))])
+
+        context_items = {
+            'suggs': suggs,
+        }
+
+    return render(request, 'scraper/index.html', context_items)
 
 
 @login_required
@@ -39,3 +63,12 @@ def detail(request, slug):
         'data': data,
     }
     return render(request, 'scraper/details.html', context_items)
+
+
+def trial(request, search):
+    l = trialer.index(search)
+    context_items = {
+        'search': search,
+        'data': l,
+    }
+    return render(request, 'trial.html', context_items)
