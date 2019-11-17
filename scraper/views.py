@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
 from login_app.models import Preferences
 from .models import Search
-from .src import indexer, trialer
+from .src import indexer
 
 
 @login_required
@@ -63,12 +63,3 @@ def detail(request, slug):
         'data': data,
     }
     return render(request, 'scraper/details.html', context_items)
-
-
-def trial(request, search):
-    l = trialer.index(search)
-    context_items = {
-        'search': search,
-        'data': l,
-    }
-    return render(request, 'trial.html', context_items)
