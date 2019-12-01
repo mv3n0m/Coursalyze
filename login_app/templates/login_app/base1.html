@@ -29,6 +29,55 @@
       {% block content %} {% endblock %}
     </div>
 
+    <script>
+      const signin = document.getElementById("signin");
+      const signup = document.getElementById("signup");
+      const submit = document.querySelector(".submit");
+      const mode = document.querySelector("#mode");
+      const l = document.querySelector("#l");
+      const lab = document.querySelector("#lab");
+      const fbox = document.querySelector("#fbox");
+      const sbox = document.querySelector("#sbox");
+      const p = document.querySelector("#p").getAttribute("value");
+
+      function sign1() {
+        signup.classList.remove("btn-success");
+        signup.classList.add("text-success");
+        signin.classList.remove("text-success");
+        signin.classList.add("btn-success");
+        submit.textContent = "Login";
+        l.textContent = "Forgot Password?";
+        l.setAttribute("href", "#");
+        mode.setAttribute("value", "signin");
+        lab.textContent = "Username";
+        fbox.setAttribute("placeholder", "enter valid username");
+        fbox.setAttribute("type", "text");
+        fbox.setAttribute("name", "username");
+        sbox.setAttribute("placeholder", "enter valid password");
+      }
+
+      function sign2() {
+        signin.classList.remove("btn-success");
+        signin.classList.add("text-success");
+        signup.classList.remove("text-success");
+        signup.classList.add("btn-success");
+        submit.textContent = "Register";
+        l.textContent = "Continue faster with LinkedIn!";
+        l.setAttribute("href", "{% url 'social:begin' 'linkedin-oauth2' %}");
+        mode.setAttribute("value", "signup");
+        lab.textContent = "Email";
+        fbox.setAttribute("type", "email");
+        fbox.setAttribute("name", "email");
+        fbox.setAttribute("placeholder", "e.g.: johndoe@email.com");
+        sbox.setAttribute("placeholder", "at least 8 characters");
+      }
+
+      function r() {
+        alert(
+          "\tSigned Up successfully! \n\nKindly login with your credentials!"
+        );
+      }
+    </script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

@@ -1,29 +1,40 @@
 {% extends 'base1.html' %} <br />
-{% block title %} Home {% endblock %}
-<br />
-{% block content %}
+{% block content %} 
+
 <div class="card" style="margin-left: 10%; margin-right: 10%; margin-top: 15%;">
+  {% if request.POST %}
+  <form action="/gate/" method="post">
+  {% else %}
   <form action="/" method="post">
+  {% endif %}
     {% csrf_token %}
-    <div class="card-header text-center">
+    <div
+      class="card-header progress-bar progress-bar-striped progress-bar-animated bg-success text-center text-white"
+    >
       Preferences
     </div>
     <div class="card-body form-group">
       <label>Technologies</label>
       <input
         type="text"
-        name="p"
+        id="p"
+        name="pref"
         class="form-control"
         placeholder="Enter comma-seperated values... e.g. python, machine learning, DevOps"
+        value=""
       />
     </div>
-    <button
-      type="submit"
-      class="btn btn-lg btn-success text-center"
-      style="width: 100%;"
-    >
-      Save
-    </button>
+    <div class="text-right mb-3 mr-3">
+      <button
+        type="submit"
+        class="btn btn-info btn-outline-success text-light"
+       {% if request.POST %}
+        onclick="r()"
+        {% endif %}
+      >
+        Save
+      </button>
+    </div>
   </form>
 </div>
 <!-- <div class="row">

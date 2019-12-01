@@ -2,8 +2,8 @@ import random
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-from login_app.models import Preferences
-from .models import Search
+from login_app.models import User_Data
+from django.contrib.auth.models import User
 from .src import indexer
 
 
@@ -11,25 +11,32 @@ from .src import indexer
 def index(request):
     obj = []
     suggs = []
-    p = request.POST.get('p')
-    if p:
-        try:
-            Preferences.objects.create(user=request.user, tech=p)
-        except:
-            error = "You are already logged in elsewhere!"
+    pref = request.POST.get('pref')
+    if pref:
+        User_Data.objects.create(user=request.user, preferences=pref)
+        user_object = User_Data.objects.get(user=request.user)
+    else:
+        username = str(request.user)
+        user_object = User_Data.objects.get(username=username)
+        user_object.user = request.user
+        user_object.save(update_fields=['user'])
 
-    techs = Preferences.objects.get(user=request.user)
-    if techs:
-        obj.clear()
-        suggs.clear()
-        for tech in techs.tech.split(','):
-            obj.extend(indexer.temp(search=tech))
-        for i in range(5):
-            suggs.append(obj[random.randint(1, len(obj))])
+        b_User = User.objects.get(username=request.user)
+        b_User.first_name = getattr(User_Data.objects.first(), 'first_name')
+        b_User.last_name = getattr(User_Data.objects.first(), 'last_name')
+        b_User.save(update_fields=['first_name', 'last_name'])
 
-        context_items = {
-            'suggs': suggs,
-        }
+    obj.clear()
+    suggs.clear()
+
+    for preference in user_object.preferences.split(','):
+        obj.extend(indexer.temp(search=preference))
+    for i in range(5):
+        suggs.append(obj[random.randint(1, len(obj))])
+
+    context_items = {
+        'suggs': suggs,
+    }
 
     return render(request, 'scraper/index.html', context_items)
 

@@ -39,7 +39,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'discussions',
 
-    'scraper.apps.ScraperConfig',
+    'scraper',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,8 +109,6 @@ DATABASES = {
 
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.linkedin.LinkedinOAuth2',
-    # 'social_core.backends.instagram.InstagramOAuth2',
-    # 'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 ]
 

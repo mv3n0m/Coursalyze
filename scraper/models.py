@@ -19,10 +19,3 @@ class CourseDetail(models.Model):
 
     def __str__(self):
         return '{} => {}'.format(self.title, self.id)
-
-
-class Search(models.Model):
-    search_text = models.TextField(null=True)
-
-    class Meta:
-        verbose_name_plural = "Searches"

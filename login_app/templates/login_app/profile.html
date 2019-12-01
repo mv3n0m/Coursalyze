@@ -1,0 +1,132 @@
+{% extends 'base1.html' %} {% block content %}
+
+<div class="card" style="margin-left: 10%; margin-right: 10%; margin-top: 10%;">
+  <div
+    class="card-header progress-bar progress-bar-striped progress-bar-animated bg-success text-center text-white"
+  >
+    <strong>
+      Edit Details
+    </strong>
+  </div>
+  <form>
+    <div class="container mt-4 mb-2 text-success">
+      <div class="row">
+        <div class="col-lg-4">
+          <img
+            src="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg"
+            alt="Not available"
+            class="img-thumbnail img-fluid"
+            style="width: 200px; height: 200px; margin-left: 20%; margin-right: 20%;"
+          />
+          <div class="form-group">
+            <!-- <input type="file" id="file" style="display:none;" />
+                                    <button
+                                      id="button"
+                                      name="button"
+                                      value="upload"
+                                      onclick="thisFileUpload();"
+                                    >
+                                      Upload
+                                    </button> -->
+            <input
+              type="file"
+              class="form-control-file mt-2"
+              style="margin-left: 20%;"
+              id="exampleFormControlFile1"
+              value=""
+            />
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="form-group row">
+            <label class="col-xl-3 col-form-label">Username: </label>
+            <div class="col-lg-8">
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                value="{{ user.username }}"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xl-3 col-form-label">First name: </label>
+            <div class="col-lg-8">
+              <input
+                type="text"
+                class="form-control"
+                name="first name"
+                value="{{ user.first_name }}"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xl-3 col-form-label">Last name: </label>
+            <div class="col-lg-8">
+              <input
+                type="text"
+                class="form-control"
+                name="last name"
+                value="{{ user.last_name }}"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xl-3 col-form-label">College/University: </label>
+            <div class="col-lg-8">
+              <input
+                type="text"
+                class="form-control"
+                name="institution"
+                value="{{ user.college }}"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xl-3 col-form-label">Qualification: </label>
+            <div class="col-lg-8">
+              <input
+                type="text"
+                class="form-control"
+                name="qualification"
+                value="{{ user.qualification }}"
+              />
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xl-3 col-form-label">Contact: </label>
+            <div class="col-lg-8">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupPrepend2"
+                    >+91</span
+                  >
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="contact"
+                  value="{{ user.contact }}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-xl-3 col-form-label">Email: </label>
+            <div class="col-lg-8">
+              <input type="text" class="form-control" name="email" value="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row text-center mt-2">
+        <div class="col-lg">
+          <button type="submit" class="btn btn-lg btn-success ">
+            Update
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,21 +1,52 @@
 {% extends 'base1.html' %} {% block content %}
 <div
   class="card text-center p-2"
-  style="margin-left: 30%; margin-right: 30%; margin-top: 20%;"
+  style="margin-left: 20%; margin-right: 20%; margin-top: 15%;"
 >
-  <div class="card-header bg-success text-white">
-    Register Yourself
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item col-md-6">
+        <div class="nav-link btn-success" id="signin" onclick="sign1()">
+          Sign In
+        </div>
+      </li>
+      <li class="nav-item col-md-6">
+        <div class="nav-link text-success" id="signup" onclick="sign2()">
+          Sign Up
+        </div>
+      </li>
+    </ul>
   </div>
-  <div class="card-body">
-    <button class="btn btn-lg btn-outline-success btn-info">
-      <a href="{% url 'social:begin' 'linkedin-oauth2' %}" style="color:white;"
-        >Sign In with LinkedIn</a
-      >
-    </button>
-    <!-- <br />
-    <div class="btn btn-lg btn-outline-success btn-danger mt-5">
-      <a href="mail/" style="color:white;">SignUp with Mail</a>
-    </div> -->
+  <div class="mt-2 ml-2 mr-2 mb-2">
+    <form action="/gate/mail/" method="post">
+      {% csrf_token %}
+      <div class="form-group text-left">
+        <label id="lab">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="fbox"
+          class="form-control"
+          placeholder="enter valid username"
+        />
+        <br />
+        <label>Password</label>
+        <input
+          type="password"
+          name="password"
+          id="sbox"
+          class="form-control"
+          placeholder="enter valid password"
+        />
+      </div>
+      <div class="text-right">
+        <a href="#" id="l">Forgot Password?</a>
+      </div>
+      <input type="hidden" id="mode" name="mode" value="signin" />
+      <button class="submit btn btn-outline-success btn-info text-light">
+        Login
+      </button>
+    </form>
   </div>
 </div>
 {% endblock %}

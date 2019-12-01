@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Preferences
+from .models import User_Data
 # Register your models here.
-admin.site.register(Preferences)
+admin.site.register(User_Data)
