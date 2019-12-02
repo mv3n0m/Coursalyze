@@ -13,7 +13,7 @@ class User_Data(models.Model):
     username = models.CharField(max_length=50, null=True)
     college = models.CharField(max_length=50, null=True)
     qualification = models.CharField(max_length=50, null=True)
-    contact = models.IntegerField(null=True)
+    contact = models.CharField(max_length=10, null=True)
     preferences = models.TextField(null=True)
 
     class Meta:

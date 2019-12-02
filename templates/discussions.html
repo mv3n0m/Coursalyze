@@ -26,7 +26,8 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success" style="box-shadow: 10px 10px 5px grey"
+>
       <span class="navbar-brand mb-0 h1 ">
         <a href="/">
           <img
@@ -51,7 +52,8 @@
             placeholder="Type here..."
             style="width: 1000px"
           />
-          <button type="submit" class="btn btn-success btn-outline-light mb-2">
+
+          <button type="submit" class="btn btn-success btn-outline-light mb-2" style="box-shadow: 2px 2px 5px white">
             Send
           </button>
         </form>
@@ -61,10 +63,10 @@
     <div class="container mt-2">
       <div class="list-group"></div>
       {% for item in items %} {% if request.user == item.user %}
-        <a href="/discussions/delete_item/{{ item.id }}/"
+        <a href="/discussions/delete_item/{{ item.id }}/" style="box-shadow: 10px 5px 5px grey;"
           class="list-group-item list-group-item-action list-group-item-secondary mb-1 text-right">{{item.text}}</a>
       {% else %}
-          <a href="#"
+          <a href="#" style="box-shadow: 5px 10px 5px grey;"
         class="list-group-item list-group-item-action list-group-item-success mb-1"><strong> {{ item.user }}:</strong> {{item.text}}</a>
           {% endif %} {% endfor %}
       </div>

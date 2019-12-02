@@ -1,13 +1,15 @@
 {% extends 'base1.html' %} <br />
 {% block content %} 
 
-<div class="card" style="margin-left: 10%; margin-right: 10%; margin-top: 15%;">
+<div class="card" style="margin-left: 10%; margin-right: 10%; margin-top: 15%; box-shadow: 5px 5px 5px grey;">
   {% if request.POST %}
   <form action="/gate/" method="post">
-  {% else %}
-  <form action="/" method="post">
-  {% endif %}
     {% csrf_token %}
+    {% else %}
+  <form action="/" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="hid" value="linkedin">
+    {% endif %}
     <div
       class="card-header progress-bar progress-bar-striped progress-bar-animated bg-success text-center text-white"
     >
@@ -20,13 +22,13 @@
         id="p"
         name="pref"
         class="form-control"
-        placeholder="Enter comma-seperated values... e.g. python, machine learning, DevOps"
+        placeholder="Enter comma-seperated values... e.g. python, machine learning, DevOps, etc."
         value=""
       />
     </div>
     <div class="text-right mb-3 mr-3">
       <button
-        type="submit"
+        type="submit" style="box-shadow: 4px 4px 5px seagreen"
         class="btn btn-info btn-outline-success text-light"
        {% if request.POST %}
         onclick="r()"

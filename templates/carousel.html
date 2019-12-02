@@ -1,4 +1,4 @@
-<div class="bd-example">
+<div class="bd-example" style="box-shadow: 20px 20px 10px grey;">
   <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <li
@@ -22,7 +22,7 @@
         />
         <div class="carousel-caption d-none d-md-block text-dark">
           <h5>Suggested according to your preferences.</h5>
-          <p>Slide through and click on the title to view the course.</p>
+          <p class="text-success">Slide through and click on the title to view the course.</p>
         </div>
       </div>
       {% for sugg in suggs %}
@@ -34,7 +34,7 @@
           alt="..."
         />
         <div class="carousel-caption d-none d-md-block text-dark">
-          <a href="https://www.coursera.org{{sugg.course_link}}/"><h2 class="text-success">{{ sugg.course_title }}</h2></a>
+          <a href="https://www.coursera.org{{sugg.course_link}}/"><h2 style="color: #088c1e; text-shadow: 3px 3px 6px #ffffff">{{ sugg.course_title }}</h2></a>
           <p>{{sugg.course_type}}</p>
           <h5 class="text-success">{{ sugg.course_provider }}</p>
 

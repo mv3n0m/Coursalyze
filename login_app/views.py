@@ -13,7 +13,6 @@ def login(request):
 
 
 def mail(request):
-    print(request.POST)
     email = request.POST.get('email')
     password = request.POST.get('password')
     username = request.POST.get('username')
@@ -25,6 +24,7 @@ def mail(request):
         User.objects.create_user(
             username=username, email=email, password=password)
     if mode == "signin":
+        username = username.split('@')[0]
         user = authenticate(request, username=username, password=password)
         if user:
             auth_login(request, user)
@@ -62,8 +62,22 @@ def home(request):
 
 
 def profile(request):
-    user = User_Data.objects.get(username=request.user)
+    user_d = User_Data.objects.get(user=request.user)
+    user = User.objects.get(username=request.user)
+    if request.POST:
+        user_d.username = request.POST.get('username')
+        user_d.first_name = request.POST.get('first name')
+        user_d.last_name = request.POST.get('last name')
+        user_d.college = request.POST.get('institution')
+        user_d.qualification = request.POST.get('qualification')
+        user_d.contact = request.POST.get('contact')
+        user.email = request.POST.get('email')
+        user_d.save(update_fields=[
+                    'username', 'first_name', 'last_name', 'college', 'qualification', 'contact'])
+        user.save(update_fields=['email'])
+        return HttpResponseRedirect('/')
     context = {
-        'user': user
+        'email': user.email,
+        'user': user_d,
     }
     return render(request, 'profile.html', context)

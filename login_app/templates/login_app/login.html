@@ -1,7 +1,7 @@
 {% extends 'base1.html' %} {% block content %}
 <div
   class="card text-center p-2"
-  style="margin-left: 20%; margin-right: 20%; margin-top: 15%;"
+  style="margin-left: 20%; margin-right: 20%; margin-top: 15%; box-shadow: 5px 5px 5px grey;"
 >
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
@@ -43,7 +43,10 @@
         <a href="#" id="l">Forgot Password?</a>
       </div>
       <input type="hidden" id="mode" name="mode" value="signin" />
-      <button class="submit btn btn-outline-success btn-info text-light">
+      <button
+        class="submit btn btn-outline-success btn-info text-light"
+        style="box-shadow: 4px 4px 5px seagreen"
+      >
         Login
       </button>
     </form>

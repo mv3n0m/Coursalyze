@@ -23,7 +23,7 @@
 
   <body
     style="background-color: MediumSeaGreen; background-image: url(http://www.pngplay.com/wp-content/uploads/1/Letter-C-PNG.png); background-repeat: no-repeat;  background-attachment: fixed;
-  background-size: cover; background-position: center;"
+  background-size: auto; background-position: center;"
   >
     <div class="container-fluid">
       {% block content %} {% endblock %}
@@ -76,6 +76,10 @@
         alert(
           "\tSigned Up successfully! \n\nKindly login with your credentials!"
         );
+      }
+
+      function u() {
+        alert("Profile details updated successfully!");
       }
     </script>
     <script

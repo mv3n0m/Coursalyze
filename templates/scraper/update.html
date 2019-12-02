@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block content %}
+<div
+  class="card"
+  style="background-color: seagreen; margin-left: 10%; margin-right: 10%; margin-top: 15%; box-shadow: 20px 20px 10px grey"
+>
+  <form action="/" method="post">
+    {% csrf_token %}
+    <div
+      class="card-header progress-bar progress-bar-striped progress-bar-animated bg-success text-center text-white"
+    >
+      Preferences
+    </div>
+    <div class="card-body form-group text-light">
+      <label>Technologies</label>
+      <input type="text" id="u" name="u" class="form-control" value="{{u}}," />
+    </div>
+    <div class="text-right mb-3 mr-3">
+      <button
+        type="submit"
+        class="btn btn-info btn-outline-success text-light"
+        style="box-shadow: 2px 2px 5px white"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

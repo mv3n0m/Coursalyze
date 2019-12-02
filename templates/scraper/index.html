@@ -1,4 +1,11 @@
 {% extends 'base.html' %} {% block content %}
 
-<br />
+<input type="hidden" id="h" value="{{p}}" />
+
+<h1 class="text-center text-info mt-4" style="text-shadow: 3px 3px 6px grey">
+  Hey, {{f_name}}!
+</h1>
+<p class="text-center text-success">
+  <strong> Have a look at few of our suggestions.</strong>
+</p>
 {% include 'carousel.html' %} {% endblock %}

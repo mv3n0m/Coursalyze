@@ -12,6 +12,8 @@ def index(request):
     obj = []
     suggs = []
     pref = request.POST.get('pref')
+    u = request.POST.get('u')
+
     if pref:
         User_Data.objects.create(user=request.user, preferences=pref)
         user_object = User_Data.objects.get(user=request.user)
@@ -20,10 +22,13 @@ def index(request):
         user_object = User_Data.objects.get(username=username)
         user_object.user = request.user
         user_object.save(update_fields=['user'])
+        if u:
+            user_object.preferences = u
+            user_object.save(update_fields=['preferences'])
 
         b_User = User.objects.get(username=request.user)
-        b_User.first_name = getattr(User_Data.objects.first(), 'first_name')
-        b_User.last_name = getattr(User_Data.objects.first(), 'last_name')
+        b_User.first_name = user_object.first_name
+        b_User.last_name = user_object.last_name
         b_User.save(update_fields=['first_name', 'last_name'])
 
     obj.clear()
@@ -32,9 +37,10 @@ def index(request):
     for preference in user_object.preferences.split(','):
         obj.extend(indexer.temp(search=preference))
     for i in range(5):
-        suggs.append(obj[random.randint(1, len(obj))])
+        suggs.append(obj[random.randint(0, len(obj)-1)])
 
     context_items = {
+        'f_name': User.objects.get(username=request.user).first_name,
         'suggs': suggs,
     }
 
@@ -70,3 +76,9 @@ def detail(request, slug):
         'data': data,
     }
     return render(request, 'scraper/details.html', context_items)
+
+
+@login_required
+def update(request):
+    u = User_Data.objects.get(username=request.user).preferences
+    return render(request, 'scraper/update.html', {'u': u})
